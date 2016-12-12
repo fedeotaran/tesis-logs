@@ -18,7 +18,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     volumes:
-      - /usr/share/elasticsearch/data:/usr/share/elasticsearch/data
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
     environment:
       ES_JAVA_OPTS: "-Xms1g -Xmx1g"
     networks:
@@ -44,8 +44,12 @@ services:
         tag: "nginx.docker.{{.Name}}"
     networks:
       - lognet
+
   app:
-    image: app
+    build: app
+    command: rails server -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./app/:/app
     ports:
       - "3000:3000"
     logging:
