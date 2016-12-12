@@ -44,6 +44,16 @@ services:
         tag: "nginx.docker.{{.Name}}"
     networks:
       - lognet
+  app:
+    image: app
+    ports:
+      - "3000:3000"
+    logging:
+      driver: fluentd
+      options:
+        tag: "rails.docker.{{.Name}}"
+    networks:
+      - lognet
 
 networks:
   lognet:
