@@ -9,9 +9,10 @@ Bundler.require(*Rails.groups)
 module Fluentdapp
   class Application < Rails::Application
     # Necesario para permitir ver consola a esta IP.
-    config.web_console.whitelisted_ips = '127.21.0.1'
+    config.web_console.whiny_requests = false
 
-    config.logger = Logger.new(STDOUT)
+    config.logger = ActiveSupport::Logger.new(STDOUT)
+    config.log_formatter = nil
     config.log_level = :info
     config.lograge.enabled = true
     config.lograge.formatter = Lograge::Formatters::Json.new

@@ -55,6 +55,7 @@ services:
     logging:
       driver: fluentd
       options:
+        #tag: "docker.{{.Name}}"
         tag: "rails.docker.{{.Name}}"
     networks:
       - lognet
