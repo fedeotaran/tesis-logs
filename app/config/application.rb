@@ -16,6 +16,11 @@ module Fluentdapp
     config.log_level = :info
     config.lograge.enabled = true
     config.lograge.formatter = Lograge::Formatters::Json.new
+    config.lograge.custom_options = lambda do |event|
+      {
+        app_timestamp: event.time
+      }
+    end
 
     config.active_record.raise_in_transactional_callbacks = true
   end

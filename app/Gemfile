@@ -14,7 +14,6 @@ gem 'sqlite3'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'act-fluent-logger-rails'
 gem 'lograge'
 
 # Use jquery as the JavaScript library
